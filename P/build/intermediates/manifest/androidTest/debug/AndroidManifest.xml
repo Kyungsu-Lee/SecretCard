@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.fingerprintdialog.test" >
+
+    <uses-sdk
+        android:minSdkVersion="23"
+        android:targetSdkVersion="24" />
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:functionalTest="false"
+        android:handleProfiling="false"
+        android:label="Tests for com.example.android.fingerprintdialog.test"
+        android:targetPackage="com.example.android.fingerprintdialog.test" />
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/application_name"
+        android:theme="@style/Theme.AppCompat.Light" >
+        <uses-library android:name="android.test.runner" />
+
+        <activity
+            android:name="com.example.android.fingerprintdialog.SettingsActivity"
+            android:label="@string/action_settings" />
+    </application>
+
+</manifest>
