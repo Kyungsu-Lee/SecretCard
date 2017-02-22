@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.example.android.fingerprintdialog.FingerprintUiHelper;
-
 /**
  * Created by lmasi on 2016-11-07.
  */
@@ -65,10 +63,11 @@ public class Secret extends Activity {
         {
             keypads[i] = new ImageView(getApplicationContext());
             keypads[i].setLayoutParams(new SecretParameter(187 * ScreenParameter.getScreenparam_x(), 187 * ScreenParameter.getScreenparam_y()).setMargin( (50 + 227 * (i%6)) * ScreenParameter.getScreenparam_x(), (i < 6 ? 2088 : 2327) * ScreenParameter.getScreenparam_y(), 0, 0));
-            keypads[i].setBackground(getDrawable(R.drawable.keypad_01 + i));
+            keypads[i].setBackground(getDrawable(R.drawable.clicked_keypad_01 + i));
             main.addView(keypads[i]);
             keypads[i].setId(i);
-            keypads[i].setOnTouchListener(new View.OnTouchListener() {
+            keypads[i].setOnTouchListener(new View.OnTouchListener()
+            {
 
 
                 @Override
@@ -81,7 +80,7 @@ public class Secret extends Activity {
                             Log.e("MESSS", Boolean.toString(flag));
                             for(int i=0; i<4; i++)
                             {
-                                showNumber[i].setBackground(getDrawable(R.drawable.keypad_11));
+                                showNumber[i].setBackground(getDrawable(R.drawable.clicked_keypad_11));
                                 showNumber[i].invalidate();
                             }
                             number = 0;
@@ -91,7 +90,7 @@ public class Secret extends Activity {
                         if(new Integer(view.getId()) == 5)
                         {
                             if(number > 0) {
-                                showNumber[--number].setBackground(getDrawable(R.drawable.keypad_11));
+                                showNumber[--number].setBackground(getDrawable(R.drawable.clicked_keypad_11));
                             }
                         }
 
@@ -123,7 +122,7 @@ public class Secret extends Activity {
                             }
 
                             for(int i=0; i<4; i++)
-                                showNumber[i].setBackground(getDrawable(R.drawable.keypad_01 + a[i]));
+                                showNumber[i].setBackground(getDrawable(R.drawable.clicked_keypad_01 + a[i]));
 
                             flag = true;
                             Log.e("MESS", Boolean.toString(flag));
@@ -131,7 +130,7 @@ public class Secret extends Activity {
 
                         else if(number != 4){
 
-                            showNumber[number].setBackground(getDrawable(R.drawable.keypad_01 + view.getId()));
+                            showNumber[number].setBackground(getDrawable(R.drawable.clicked_keypad_01 + view.getId()));
 
                             int id = view.getId() < 5 ? view.getId()+1 : view.getId();
                             if(id==10) id = 0;
@@ -153,7 +152,7 @@ public class Secret extends Activity {
         {
             showNumber[i] = new ImageView(getApplicationContext());
             showNumber[i].setLayoutParams(new SecretParameter(187 * ScreenParameter.getScreenparam_x(), 187 * ScreenParameter.getScreenparam_y()).setMargin( (307 + (187+50) * i) * ScreenParameter.getScreenparam_x(), 991 * ScreenParameter.getScreenparam_y(), 0, 0));
-            showNumber[i].setBackground(getDrawable(R.drawable.keypad_11));
+            showNumber[i].setBackground(getDrawable(R.drawable.clicked_keypad_11));
             main.addView(showNumber[i]);
         }
     }
