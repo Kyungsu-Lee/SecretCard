@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
             DbResource.insert(19, 5843);
             DbResource.insert(20, 8091);
             DbResource.insert(21, 8149);
-            DbResource.insert(22, 4980);
+            DbResource.insert(22, 7980);
             DbResource.insert(23, 9800);
             DbResource.insert(24, 1681);
             DbResource.insert(25, 7799);

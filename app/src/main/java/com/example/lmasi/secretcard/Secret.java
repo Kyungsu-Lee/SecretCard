@@ -2,6 +2,7 @@ package com.example.lmasi.secretcard;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class Secret extends Activity {
 
     RelativeLayout main;
     EditText editText;
+    ImageView setting;
 
     ImageView[] keypads;
     ImageView[] showNumber;
@@ -55,6 +57,24 @@ public class Secret extends Activity {
         });
 
 
+        setting = new ImageView(getApplicationContext());
+        setting.setLayoutParams(new SecretParameter(130 * ScreenParameter.getScreenparam_x() * 1.1, 85 * ScreenParameter.getScreenparam_y() * 1.1).addRules(RelativeLayout.ALIGN_PARENT_RIGHT).setMargin(0, 30 * ScreenParameter.getScreenparam_y(), 30 * ScreenParameter.getScreenparam_y(), 0));
+        setting.setBackground(getResources().getDrawable(R.drawable.settings));
+        main.addView(setting);
+        setting.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent)
+            {
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP)
+                {
+                    startActivity(new Intent(Secret.this, Settings.class));
+                    finish();
+                }
+
+
+                return true;
+            }
+        });
 
 
 

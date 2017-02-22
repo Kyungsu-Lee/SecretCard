@@ -18,6 +18,11 @@ public class DbResource {
         db.execSQL("insert into ShinHan values (" + index + ","+ number +");");
     }
 
+    public static void update(int idx, int number)
+    {
+        db.execSQL("update ShinHan set number = " + number + " where idx = " + idx + ";");
+    }
+
     public static int get(int index)
     {
 
