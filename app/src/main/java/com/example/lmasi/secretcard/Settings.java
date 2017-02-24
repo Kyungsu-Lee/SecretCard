@@ -53,7 +53,7 @@ public class Settings extends Activity {
 
         for(int i=1; i<=30; i++)
         {
-            str += i + " : " + Integer.toString(DbResource.get(i)) + "\n";
+            str += i + " : " + Integer.toString(DbResource.get(i, "신한")) + "\n";
         }
 
         textView.setText(str);

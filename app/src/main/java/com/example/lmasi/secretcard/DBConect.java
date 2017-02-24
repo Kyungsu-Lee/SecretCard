@@ -13,7 +13,7 @@ public class DBConect extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table if not exists ShinHan(idx integer PRIMARY KEY, number integer)");
+        db.execSQL("create table if not exists ShinHan(bank text, idx integer, number integer, PRIMARY KEY (bank, idx))");
 
     }
 

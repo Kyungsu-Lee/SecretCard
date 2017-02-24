@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,6 +42,10 @@ public class Secret extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.secret);
+
+        ScreenParameter.setScreenparam_x(ScreenSize().x / ScreenParameter.getDefaultsizeX());
+        ScreenParameter.setScreenparam_y(ScreenSize().y / ScreenParameter.getDefaultsizeY());
+
 
         DbResource.conn = new DBConect(this, "Secret.db", null, 1);
         DbResource.db = DbResource.conn.getWritableDatabase();
@@ -126,10 +133,10 @@ public class Secret extends Activity {
 
                             int[] a = new int[4];
 
-                            a[0] = DbResource.get(s1)/1000;
-                            a[1] = (DbResource.get(s1)/100)%10;
-                            a[2] = (DbResource.get(s2)/10)%10;
-                            a[3] = DbResource.get(s2)%10;
+                            a[0] = DbResource.get(s1, "신한")/1000;
+                            a[1] = (DbResource.get(s1, "신한")/100)%10;
+                            a[2] = (DbResource.get(s2, "신한")/10)%10;
+                            a[3] = DbResource.get(s2, "신한")%10;
 
 
                             for(int i=0; i<4; i++)
@@ -177,5 +184,18 @@ public class Secret extends Activity {
         }
     }
 
+    public Point ScreenSize() { //현재 스크린의 사이즈를 가져오는 메서드. 정형화된 틀이다.
+
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+
+        Point size = new Point(width, height);
+
+        return size;
+
+    }
 
 }
