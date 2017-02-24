@@ -27,6 +27,7 @@ public class Secret extends Activity {
     RelativeLayout main;
     EditText editText;
     ImageView setting;
+    BankListView bankListView;
 
     ImageView[] keypads;
     ImageView[] showNumber;
@@ -62,6 +63,13 @@ public class Secret extends Activity {
                 return true;
             }
         });
+
+        bankListView = new BankListView(getApplicationContext());
+        bankListView.setLayoutParams(
+                new SecretParameter(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                        .setMargin(20 * ScreenParameter.getScreenparam_x(), 20 * ScreenParameter.getScreenparam_y(), 0, 0)
+        );
+        main.addView(bankListView);
 
 
         setting = new ImageView(getApplicationContext());

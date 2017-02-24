@@ -14,6 +14,7 @@ public class DBConect extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("create table if not exists ShinHan(bank text, idx integer, number integer, PRIMARY KEY (bank, idx))");
+        db.execSQL("create table if not exists PrimaryBank(bank text)");
 
     }
 

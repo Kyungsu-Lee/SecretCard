@@ -34,4 +34,24 @@ public class DbResource {
 
         return c.getInt(0);
     }
+
+    public static void initPrimaryBank()
+    {
+        Cursor c = db.rawQuery("select * from PrimaryBank", null);
+        if(c.getCount() == 0)
+            db.execSQL("insert into PrimaryBank values ('신한')");
+    }
+
+    public static void updatePrimaryBank(String bank)
+    {
+        db.execSQL("update PrimaryBank set bank = '" + bank + "';");
+    }
+
+    public static String getPrimaryBankName()
+    {
+        Cursor c = db.rawQuery("select bank from PrimaryBank", null);
+        c.moveToNext();
+
+        return c.getString(0);
+    }
 }

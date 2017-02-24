@@ -71,6 +71,7 @@ public class MainActivity extends Activity {
         catch (Exception e)
         {
             e.printStackTrace();
+            DbResource.initPrimaryBank();
         }
 
         startService(new Intent(getApplicationContext(), SecretService.class));
